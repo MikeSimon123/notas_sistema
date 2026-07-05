@@ -28,6 +28,7 @@
             resposta = await conexao.tryConnection();
             if(resposta["status"] == "sucesso"){
                 alert("Bem-vindo(a)!");
+                window.location = 'home.php';
             } else if(resposta["status"] == "falha"){
                 alert("Tentativa de login falha!");
             } else if(resposta["status"] == "erro"){

@@ -1,6 +1,8 @@
 <?php
     require_once "connection.php";
     session_start();
+    require_once "Notas.php";
+    require_once "Alunos.php";
     $resposta = ["status" => "falhou"];
     header("Content-Type: application/json");
     $json = file_get_contents("php://input");
@@ -68,8 +70,8 @@
             $tabela = $dados["dados"]["tabela"];
             $nome = $_SESSION["nome"];
             $id = $_SESSION["id"];
-            $comando = $conexao->query("insert into $tabela(nome, identificacao)
-            values('$nome', '$id')");
+            $comando = $conexao->query("insert into $tabela(nome, identificacao, professor)
+            values('$nome', '$id', '0')");
             $resposta = ["status" => "sucesso"];
         } catch(Exception){
             $resposta = ["status" => "erro"];
@@ -151,6 +153,50 @@
             }
         } catch(Exception){
             $resposta = ["status" => "erro"];
+        }
+    }
+    if($dados["comando"] == "getNotas"){
+        try {
+            $dadosArray = getDados();
+            if($dadosArray == []){
+                $resposta = ["status" => "semCursos"];
+            } else {
+                $resposta = ["status" => "sucesso", "cursos" => $dadosArray];
+            }
+        } catch(Exception $erro){
+            $resposta = ["status" => "erro", "erro" => $erro];
+        }
+    }
+    if($dados["comando"] == "getAlunos"){
+        try {
+            $dadosArray = getAlunos($_SESSION["nome"]);
+            if($dadosArray == []){
+                $resposta = ["status" => "semCursos"];
+            } else {
+                $resposta = ["status" => "sucesso", "cursos" => $dadosArray];
+            }
+        } catch(Exception $erro){
+            $resposta = ["status" => "erro", "erro" => "$erro"];
+        }
+    }
+    if($dados["comando"] == "editarDadosBanco"){
+        try {
+            $tabela = $dados["dados"]["tabela"] . "tb";
+            $n1 = $dados["dados"]["nota1"];
+            $n2 = $dados["dados"]["nota2"];
+            $n3 = $dados["dados"]["nota3"];
+            $n4 = $dados["dados"]["nota4"];
+            $nt1 = 0; $nt2 = 0; $nt3 = 0; $nt4 = 0;
+            if($n1 == ""){$nt1 = 0;} else { $nt1 = (float)$n1; $n1 = "nota1='$n1',";}
+            if($n2 == ""){$nt2 = 0;} else { $nt2 = (float)$n2; $n2 = "nota2='$n2',";}
+            if($n3 == ""){$nt3 = 0;} else { $nt3 = (float)$n3; $n3 = "nota3='$n3',";}
+            if($n4 == ""){$nt4 = 0;} else { $nt4 = (float)$n4; $n4 = "nota4='$n4',";}
+            $media = ($nt1+$nt2+$nt3+$nt4)/4;
+            $nomeAluno = $dados["dados"]["nomeAluno"];
+            $comando = $conexao->query("update $tabela set $n1 $n2 $n3 $n4 media = '$media' where nome = '$nomeAluno'");
+            $resposta = ["status" => "sucesso"];
+        } catch(Exception $erro){
+            $resposta = ["status" => "erro", "erro" => "$erro"];
         }
     }
     

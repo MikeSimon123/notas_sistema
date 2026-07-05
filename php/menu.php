@@ -4,9 +4,14 @@
     } else if ($_SESSION["func"] == "professor"){
         $cursos = "cursosProfessor.php";
     }
+    if($_SESSION["func"] == "aluno"){
+        $boletim = "boletim.php";
+    } else if($_SESSION["func"] == "professor"){
+        $boletim = "boletimProfessor.php";
+    }
     echo "
         <a href='$cursos'>Cursos</a>
-        <a href=''>Boletim</a>
+        <a href='$boletim'>Boletim</a>
         <input type='button' value='Sair' onclick='sair()'>
 
         <script src='../js/conexao.js'></script>

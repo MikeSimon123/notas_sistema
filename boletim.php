@@ -25,9 +25,9 @@
             resposta = await conexao.tryConnection();
             if(resposta["status"] == "sucesso"){
                 sectionBoletim.innerHTML = "";
-                cursos = resposta["cursos"];
-                for(i=0; i<cursos.length; i++){
-                    cursos = JSON.parse(cursos[i]);
+                cursosArr = resposta["cursos"];
+                for(i=0; i<cursosArr.length; i++){
+                    cursos = JSON.parse(cursosArr[i]);
                     title = document.createElement("p");
                     title.innerText = cursos["nome"];
                     n1 = document.createElement("p");
@@ -43,8 +43,8 @@
                     if(cursos["nota4"] == null){n4.innerText = "-"}
                     else {n4.innerText = cursos["nota4"];} 
                     media = document.createElement("p");
-                    if(cursos["meida"] == null){media.innerText = "-"}
-                    else {meida.innerText = cursos["meida"];} 
+                    if(cursos["media"] == null){media.innerText = "-"}
+                    else {media.innerText = cursos["media"];} 
                     section = document.createElement("section");
                     section.appendChild(title);
                     section.appendChild(n1);

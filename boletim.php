@@ -79,6 +79,7 @@
             else if(resposta["status"] == "semCursos"){
                 sectionBoletim.innerHTML = "";
                 msg = document.createElement("p");
+                msg.classList.add("msg");
                 msg.innerText = "Nenhum cadastro feito nos cursos ainda";
                 sectionBoletim.appendChild(msg);
             } else if(resposta["status"] == "erro"){

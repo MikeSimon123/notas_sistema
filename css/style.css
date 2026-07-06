@@ -251,3 +251,16 @@ input[type='date']{
     transform: scale(1);
     transition: all 400ms;
 }
+
+.msg {
+    display: flex;
+    width: 400px;
+    margin: 5px auto;
+}
+#formCursos {
+    display: flex;
+    flex-direction: column;
+}
+#msg {
+    width: 20vw;
+}

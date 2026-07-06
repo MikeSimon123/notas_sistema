@@ -22,31 +22,39 @@
                 <option value="default">Selecione um curso</option>
             </select>
             <input type="submit" value="Cadastrar-se">
+            <section id="msg"></section>
         </form>
     </section>
 
     <script>
         const formCursos = document.querySelector("#formCursos");
         const selectCursos = document.querySelector("#selectCursos");
+        selectCursos.style.textAlign = "center";
         const sectionCursosCadastrados = document.querySelector("#sectionCursosCadastrados")
+        const sectionMsg = document.querySelector("#msg");
+        sectionMsg.style.display = "none";
 
         async function getCursos(){
             conexao = new Conexao("getCursos");
             resposta = await conexao.tryConnection();
+            sectionMsg.innerHTML = "";
             if(resposta["status"] == "sucesso"){
                 cursos = resposta["cursos"];
                 selectCursos.innerHTML = "<option value='default'>Selecione um curso</option>";
                 for(i=0; i<cursos.length; i++){
                     optionCurso = document.createElement("option");
-                    optionCurso.value = cursos[i]["nome"];
-                    optionCurso.innerText = cursos[i]["nomeTratado"];
+                    optionCurso.value = cursos[i]["nomeTratado"];
+                    optionCurso.innerText = cursos[i]["nome"];
                     selectCursos.appendChild(optionCurso);
                 }
             } else if(resposta["status"] == "semCursos") {
                 selectCursos.innerHTML = "<option value='default'>Selecione um curso</option>";
                 msg = document.createElement("p");
+                msg.style.width = '25vw';
                 msg.innerText = "Não existem cursos disponíveis no momento";
-                formCursos.appendChild(msg);
+                sectionMsg.style.width = "25vw";
+                sectionMsg.appendChild(msg);
+                sectionMsg.style.display = "block";
             }
             else {
                 alert("Não foi possível trazer os cursos")
@@ -74,6 +82,7 @@
             } else if(resposta["status"] == "semCursos"){
                 sectionCursosCadastrados.innerHTML = "";
                 msg = document.createElement("p");
+                msg.classList.add("msg");
                 msg.innerText = "Nenhum cadastro feito nos cursos ainda";
                 sectionCursosCadastrados.appendChild(msg);
             } else {

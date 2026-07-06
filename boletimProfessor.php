@@ -113,17 +113,35 @@
                 cursosArray = resposta["cursos"];
                 cursosSection = document.createElement("section");
                 for(i = 0; i<cursosArray.length; i++){
-                    nome = cursosArray[i][0];
+                    nome = "";
+                    if(cursosArray[i] == "nao tem aluno"){
+                        nome = cursosArray[i+1][0];
+                        
+                    } else {
+                        nome = cursosArray[i][0];
+                    }
+                    console.log(nome);
+                    
                     alunos = [];
                     section = document.createElement("section");
                     nomeTitle = document.createElement("h2");
                     nomeTitle.innerText = nome;
                     section.appendChild(nomeTitle)
-                    for(j = 1; j<cursosArray[i].length; j++){
+                    if(cursosArray[i] == "nao tem aluno"){
+                        console.log(cursosArray);
+                        nome = cursosArray[i+1][0];
+                        ms = document.createElement("p");
+                        ms.classList.add("msg");
+                        ms.innerText = "Não tem aluno";
+                        i++;
+                        section.appendChild(ms);
+                    } else {
+                        for(j = 1; j<cursosArray[i].length; j++){
                         alunos.push(JSON.parse(cursosArray[i][j]));
                     }
                     if(alunos == []){
                         msg = document.createElement("p")
+                        msg.classList.add("msg");
                         msg.innerText = "Sem alunos no curso";
                         section.appendChild(msg);
                     } else {
@@ -172,12 +190,15 @@
                             section.appendChild(section2);
                         }
                     }
+                    }
+                    
                     cursosSection.appendChild(section);
                 }
                 cursos.appendChild(cursosSection);
             } else if(resposta["status"] == "semCursos"){
                 cursos.innerHTML = "";
                 msg = document.createElement("p");
+                msg.classList.add("msg");
                 msg.innerText = "Nenhum curso administrado por você";
                 cursos.appendChild(msg);
             } else {

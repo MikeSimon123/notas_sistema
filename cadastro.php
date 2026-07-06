@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Página de Cadastro</title>
 </head>
 <body>
     <h1>Página de Cadastro</h1>
-
+    <input type="button" value="Voltar" id="voltar" onclick='window.location="index.php"'>
     <form action="" method="post" id="formCadastro">
-        <p>Nome completo:</p> <input type="text" id="nomeCompleto">
-        <p>Data de Nascimento</p> <input type="date" id="dataNasc">
-        <p>Email:</p> <input type="email" id="email">
-        <p>Telefone</p> <input type="tel" id="tel">
-        <p>Nome de Usuário:</p><input type="text" id="user">
-        <p>Senha:</p> <input type="password" id="senha">
-        <p>Confirme sua senha:</p><input type="password" id="confirmSenha">
-        <input type="submit" value="Cadastrar">
+        <h2>Cadastre-se aqui</h2>
+        <section id="container">
+            <p>Nome completo:</p> <input type="text" id="nomeCompleto">
+            <p>Data de Nascimento</p> <input type="date" id="dataNasc">
+            <p>Email:</p> <input type="email" id="email">
+            <p>Telefone</p> <input type="tel" id="tel">
+            <p>Nome de Usuário:</p><input type="text" id="user">
+            <p>Senha:</p> <input type="password" id="senha">
+            <p>Confirme sua senha:</p><input type="password" id="confirmSenha">
+        </section>
+        <section id="containerSubmit">
+            <input type="submit" value="Cadastrar" id='cadastrar'>
+        </section>
     </form>
 
     <script src="js/conexao.js"></script>

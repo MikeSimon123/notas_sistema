@@ -7,10 +7,11 @@
     <?php if($_SESSION["func"] == "professor"){
         echo "<script>window.location = 'boletimProfessor.php';</script>";
     }?>
+    <link rel="stylesheet" href="css/style.css">
     <title>Página de Boletim</title>
 </head>
 <body>
-    <?php include_once "php/menu.php";?>
+    <section id='menu'><?php include_once "php/menu.php";?></section>
     <h1>Veja o seu boletim</h1>
     <section id="boletim">
         <h2>Confira suas notas</h2>
@@ -26,6 +27,26 @@
             if(resposta["status"] == "sucesso"){
                 sectionBoletim.innerHTML = "";
                 cursosArr = resposta["cursos"];
+                section1 = document.createElement("section");
+                tN = document.createElement("h3");
+                tN.innerText = "Curso";
+                tN1 = document.createElement("h3");
+                tN1.innerText = "Nota 1";
+                tN2 = document.createElement("h3");
+                tN2.innerText = "Nota 2";
+                tN3 = document.createElement("h3");
+                tN3.innerText = "Nota 3";
+                tN4 = document.createElement("h3");
+                tN4.innerText = "Nota 4";
+                tM = document.createElement("h3");
+                tM.innerText = "Média"
+                section1.appendChild(tN);
+                section1.appendChild(tN1);
+                section1.appendChild(tN2);
+                section1.appendChild(tN3);
+                section1.appendChild(tN4);
+                section1.appendChild(tM);
+                sectionBoletim.appendChild(section1);
                 for(i=0; i<cursosArr.length; i++){
                     cursos = JSON.parse(cursosArr[i]);
                     title = document.createElement("p");

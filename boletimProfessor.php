@@ -7,10 +7,11 @@
     <?php if($_SESSION["func"] == "aluno"){
         echo "<script>window.location = 'boletim.php';</script>";
     }?>
+    <link rel="stylesheet" href="css/style.css">
     <title>Página de Boletim</title>
 </head>
 <body>
-    <?php include_once "php/menu.php";?>
+    <section id='menu'><?php include_once "php/menu.php";?></section>
     <h1>Edite as notas dos seus alunos</h1>
     <section id="boletim">
         <h2>Edite as notas dos seus alunos</h2>
@@ -49,7 +50,7 @@
         editarNotas.style.display = "none";
         function editarDados(nomeAl, tabela, n1, n2, n3, n4){
             editarNotas.innerHTML = "";
-            editarNotas.style.display = "block";
+            editarNotas.style.display = "flex";
             editarNotasTitle = document.createElement("h2");
             editarNotasTitle.innerText = "Editando notas de: "+nomeAl;
             nota1 = document.createElement("p");
@@ -57,13 +58,13 @@
             nota1.innerText += (n1 != null) ? n1 : "-";
             nota2 = document.createElement("p");
             nota2.innerText = "Nota 2º Bimestre atual: "
-            nota2.innerText += (n2 != null) ? n1 : "-";
+            nota2.innerText += (n2 != null) ? n2 : "-";
             nota3 = document.createElement("p");
             nota3.innerText = "Nota 3º Bimestre atual: "
-            nota3.innerText += (n3 != null) ? n1 : "-";
+            nota3.innerText += (n3 != null) ? n3 : "-";
             nota4 = document.createElement("p");
             nota4.innerText = "Nota 4º Bimestre atual: "
-            nota4.innerText += (n4 != null) ? n1 : "-";
+            nota4.innerText += (n4 != null) ? n4 : "-";
             editarNota1 = document.createElement("input");
             editarNota1.id = "editarNota1";
             editarNota1.value = (n1 != null) ? n1 : "";
@@ -85,12 +86,23 @@
             editar.setAttribute("onclick", `
                 editarDadosBanco('${nomeAl}');
             `)
+            cancelar = document.createElement("input");
+            cancelar.type = "button";
+            cancelar.value = "Cancelar";
+            cancelar.setAttribute("onclick", `
+                editarNotas.style.display = "none";
+            `)
+            section1 = document.createElement("section");
+            section1.id = "sectionEditarNotas"
             editarNotas.appendChild(editarNotasTitle);
             editarNotas.appendChild(nomeCurso);
-            editarNotas.appendChild(nota1); editarNotas.appendChild(editarNota1);
-            editarNotas.appendChild(nota2); editarNotas.appendChild(editarNota2);
-            editarNotas.appendChild(nota3); editarNotas.appendChild(editarNota3);
-            editarNotas.appendChild(nota4); editarNotas.appendChild(editarNota4);
+            section1.appendChild(nota1); section1.appendChild(editarNota1);
+            section1.appendChild(nota2); section1.appendChild(editarNota2);
+            section1.appendChild(nota3); section1.appendChild(editarNota3);
+            section1.appendChild(nota4); section1.appendChild(editarNota4);
+            
+            editarNotas.appendChild(section1);
+            editarNotas.appendChild(cancelar);
             editarNotas.appendChild(editar);
         }
         async function getAlunos(){
@@ -104,7 +116,7 @@
                     nome = cursosArray[i][0];
                     alunos = [];
                     section = document.createElement("section");
-                    nomeTitle = document.createElement(nome);
+                    nomeTitle = document.createElement("h2");
                     nomeTitle.innerText = nome;
                     section.appendChild(nomeTitle)
                     for(j = 1; j<cursosArray[i].length; j++){
@@ -149,13 +161,15 @@
                             if(alunos[h]["media"] != null){
                                 media.innerText = alunos[h]["media"];
                             } else {media.innerText = "-"}
-                            section.appendChild(nomeAluno);
-                            section.appendChild(nota1);
-                            section.appendChild(nota2);
-                            section.appendChild(nota3);
-                            section.appendChild(nota4);
-                            section.appendChild(media);
-                            section.appendChild(editar);
+                            section2 = document.createElement("section");
+                            section2.appendChild(nomeAluno);
+                            section2.appendChild(nota1);
+                            section2.appendChild(nota2);
+                            section2.appendChild(nota3);
+                            section2.appendChild(nota4);
+                            section2.appendChild(media);
+                            section2.appendChild(editar);
+                            section.appendChild(section2);
                         }
                     }
                     cursosSection.appendChild(section);

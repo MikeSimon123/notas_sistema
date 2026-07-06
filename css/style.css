@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #facc75
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+#formLogin, #formCadastro, #formCadastrarCurso{
+    width: 35vw;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 5px auto; 
+    background-color: #e9a322;
+    padding: 10px;
+    border: 2px solid black;
+}
+p {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
+}
+h2 {
+    text-align: center;
+    font-size: 1.6rem;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+input[type="text"], input[type="password"], input[type='tel'], input[type="email"]{
+    font-size: 1.2rem;
+    padding: 2px 2px 2px 5px;
+    border-radius: 5px;
+    transform: scale(0.8);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 2px solid black;
+}
+#formLogin #container, #formCadastro #container, #formCadastrarCurso #container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+#containerSubmit {
+    display: flex;
+    justify-content: right;
+    width: 30vw;
+}
+#entrar, #cadastrar {
+    width: 90px;
+    margin: 5px;
+    background-color: #e8c126;
+    transform: scale(1);
+    cursor: pointer;
+    transition: all 400ms;
+}
+#entrar:hover, #cadastrar:hover{
+    transition: all 400ms;
+    transform: scale(1.1);
+}
+#cadastro {
+    width: 35vw;
+    margin:5px auto;
+}
+#cadastro {
+    font-size: 1rem;
+}
+#cadastro a {
+    color: rgb(9, 26, 126);
+}
+
+input[type='date']{
+    width: 150px;
+    padding: 2px;
+    display: flex;
+    margin: 0 auto;
+}
+#formCadastro {
+    width: 50vw;
+    justify-content: center;
+}
+
+#voltar {
+    display: flex;
+    margin: 5px auto;
+    padding: 5px;
+    background-color: #e9a322;
+    cursor: pointer;
+    transition: all 400ms;
+}
+#voltar:hover {
+    transition: all 400ms;
+    transform: scale(1.1);
+}
+
+#menu {
+    justify-content: space-around;
+    display: flex;
+    background-color: #e9a322;
+    padding: 5px;
+    align-items: center;
+}
+#menu a {
+    font-size: 1.2rem;
+    color: rgb(9, 26, 126);
+}
+
+#menu input {
+    padding: 5px;
+    background-color: #e9a322;
+    cursor: pointer;
+    transition: all 400ms;
+}
+#menu input:hover {
+    transition: all 400ms;
+    transform: scale(1.1);
+}
+.curso {
+    border: 2px solid black;
+    width: 35vw;
+    justify-content: space-around;
+    display: flex;
+    margin: 5px auto;
+}
+#formCursos {
+    width: 35vw;
+    border: 2px solid black;
+    margin: 5px auto;
+    justify-content: space-around;
+    display: flex;
+    padding: 10px;
+}
+#formCursos select {
+    background: #e9a322;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    padding: 3px;
+}
+#formCursos input[type='submit'], #cadCurso{
+    background-color: #e9a322;
+    transition: all 400ms;
+    transform: scale(1);
+    cursor: pointer;
+    padding: 3px
+}
+#formCursos input[type='submit']:hover, #cadCurso:hover {
+    transition: all 400ms;
+    transform: scale(1.1);
+}
+
+#sectionBoletim {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    margin: 5px auto;
+}
+#sectionBoletim section{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border: 2px solid black;
+    padding: 4px;
+    
+}
+#sectionCursosAdministro {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    justify-content: center;
+    align-items: center;
+    margin: 5px auto;
+}
+#sectionCursosAdministro section {
+    border: 2px solid black;
+    padding: 5px;
+    width: 35vw;
+    justify-content: space-around;
+    display: flex;
+}
+#formCadastrarCurso {
+    width: 50vw;
+}
+
+#cursos section {
+    background-color: #ccc;
+    border-radius: 10px;
+    display: flex;
+    border: 2px solid black;
+    flex-direction:column;
+    padding: 10px;
+    margin: 10px auto;
+    width: 65vw;
+}
+#cursos {
+    display: flex;
+    flex-direction: column;
+}
+#cursos section section{
+    border: 2px solid black;
+    padding: 10px;
+    transform: scale(0.9);
+    background-color: #ddd;
+    flex-direction: column;
+}
+#cursos section section section {
+    display: grid;
+    padding: 5px;
+    background-color: #eee;
+    grid-template-columns: repeat(7, 1fr);
+
+}
+#editarNotas {
+    position: absolute;
+    display: flex;
+    width: 300px;
+    top: 100px;
+    left: 100px;
+    flex-direction: column;
+    background-color: #e8c126;
+    padding: 10px;
+    gap: 10px;
+    border: 2px solid black;
+}
+
+#sectionEditarNotas {
+    background-color: #e9a322;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    padding: 10px;
+}
+#sectionEditarNotas input {
+    width: 45px;
+    border-radius: 8px;
+    padding: 2px 2px 2px 8px;
+}
+#editarNotas p {
+    text-align: center;
+}
+#editarNotas input[type="button"]{
+    background-color:#e9a322;
+    transform: scale(0.9);
+    transition: all 400ms;
+    font-size: 1rem;
+    cursor: pointer;
+}
+#editarNotas input[type="button"]:hover {
+    transform: scale(1);
+    transition: all 400ms;
+}

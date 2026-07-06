@@ -5,20 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require_once "php/verify.php";?>
     <?php if($_SESSION["func"] == "aluno"){echo "<script>window.location = 'cursos.php'</script>";}?>
+    <link rel="stylesheet" href="css/style.css">
     <title>Página de Cursos</title>
 </head>
 <body>
-    <?php include_once "php/menu.php" ?>
+    <section id='menu'><?php include_once "php/menu.php" ?></section>
     <h1>Administre um curso</h1>
     <section id="cursosAdministro">
         <h2>Cursos que administro</h2>
         <section id="sectionCursosAdministro"></section>
     </section>
     <section id="cadastrarCurso">
+        <h2>Cadastrar um curso</h2>
         <form action="" method="post" id="formCadastrarCurso">
-            <p>Nome do curso:</p> <input type="text" id="nomeCurso">
-            <p>Descrição:</p> <textarea name="" id="descCurso"></textarea>
-            <input type="submit" value="Cadastrar curso">
+            <section id="container">
+                <p>Nome do curso:</p> <input type="text" id="nomeCurso">
+                <p>Descrição:</p> <textarea name="" id="descCurso"></textarea>
+            </section>
+            <section id="containerSubmit">
+                <input type="submit" value="Cadastrar curso" id='cadCurso'>
+            </section>
         </form>
     </section>
 

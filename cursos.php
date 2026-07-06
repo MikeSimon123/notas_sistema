@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require_once "php/verify.php";?>
     <?php if($_SESSION["func"] == "professor"){echo "<script>window.location = 'cursosProfessor.php'</script>";}?>
-
+    <link rel="stylesheet" href="css/style.css">
     <title>Página de cursos</title>
 </head>
 <body>
-    <?php include_once "php/menu.php";?>
+    <section id='menu'><?php include_once "php/menu.php";?></section>
     <h1>Inscreva-se em um curso</h1>
     <section id="cursosCadastrados">
         <h2>Cursos em que estou cadastrado</h2>
@@ -66,6 +66,7 @@
                     p = document.createElement("p");
                     p.innerText = cursos[i]["descricao"];
                     section = document.createElement("section");
+                    section.classList.add("curso");
                     section.appendChild(h3);
                     section.appendChild(p);
                     sectionCursosCadastrados.appendChild(section);

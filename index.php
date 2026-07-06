@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Página de Login</title>
 </head>
 <body>
     <h1>Página de Login</h1>
     <form action="" id="formLogin">
-        <input type="text" name="" id="login" placeholder="Insira seu login">
-        <input type="password" name="" id="senha" placeholder="Insira sua senha">
-        <input type="submit" value="Entrar">
+        <h2>Faça Login aqui</h2>
+        <section id="container">
+            <p>Login:</p><input type="text" name="" id="login" placeholder="Insira seu login">
+            <p>Senha:</p><input type="password" name="" id="senha" placeholder="Insira sua senha">
+        </section>
+        <section id="containerSubmit">
+            <input type="submit" value="Entrar" id='entrar'>
+        </section>
     </form>
-    <p>Ainda não tem login? <a href="cadastro.php">Cadastre-se aqui</a></p>
+    <p id='cadastro'>Ainda não tem login? <a href="cadastro.php">Cadastre-se aqui</a></p>
 
     <script src="js/conexao.js"></script>
     <script>
